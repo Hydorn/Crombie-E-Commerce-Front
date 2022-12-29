@@ -1,0 +1,21 @@
+.submitBtn {
+  height: 4rem;
+  width: 29rem;
+  background-color: transparent;
+  color: #f4f4f4;
+  font-family: inherit;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  border: 1px solid #f4f4f4;
+  border-radius: 5rem;
+  letter-spacing: 5px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.submitBtn:hover {
+  background-color: #f4f4f4;
+  scale: 1.05;
+  color: #000;
+}

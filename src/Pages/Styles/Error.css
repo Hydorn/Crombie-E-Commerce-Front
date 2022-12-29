@@ -1,0 +1,26 @@
+.error_element {
+  font-family: "Hanken Grotesk", sans-serif;
+  color: #f4f4f4;
+  height: 30vh;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: solid 1px #f5326c;
+  border-radius: 5px;
+}
+
+.error_element h1 {
+  font-size: 5rem;
+}
+
+.error_element p {
+  font-size: 2.5rem;
+}
+
+.error_element span {
+  font-style: italic;
+  font-size: 1.75rem;
+  color: #a0a0a0;
+}

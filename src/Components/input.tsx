@@ -1,13 +1,12 @@
+import { InputHTMLAttributes } from "react";
 import "./Styles/input.css";
 type InputProps = {
-  type: string;
-  placeholder: string;
-};
-const Input: React.FC<InputProps> = ({ type, placeholder }) => {
+} & InputHTMLAttributes<HTMLInputElement> ;
+const Input: React.FC<InputProps> = ({ placeholder, ...props }) => {
   return (
-    <label>
+    <label className="input_text">
       <span className="label">{placeholder}</span>
-      <input className="input" type={type} placeholder={placeholder} required />
+      <input className="input" {...props} />
     </label>
   );
 };

@@ -1,13 +1,19 @@
-import NavBar from "../Components/navBar";
-import Product from "../Components/product";
-
+import NavBar from "../Components/NavBar";
+import Product from "../Components/Product";
+import "./Styles/Home.css"
 const Home = () => {
   return (
-    <>
+    <div className="home_container">
       <NavBar />
-      <div className="products"></div>
+      <div className="products">
       <Product />
-    </>
+      <Product />
+      <Product />
+      <Product />
+      </div>
+
+    </div>
+
   );
 };
 

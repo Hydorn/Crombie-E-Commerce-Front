@@ -1,8 +1,8 @@
-import Input from "../Components/input";
+import Input from "../Components/Input";
 import { AiFillLock } from "react-icons/ai";
 import "./Styles/Login.css";
-import SubmitBtn from "../Components/submitBtn";
-import NavBar from "../Components/navBar";
+import SubmitBtn from "../Components/SubmitBtn";
+import NavBar from "../Components/NavBar";
 
 const Login = () => {
   return (

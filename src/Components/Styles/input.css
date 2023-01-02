@@ -1,37 +1,52 @@
-.input_text{
+.input_text {
   position: relative;
 }
-.label{
+.label {
   color: #f4f4f4;
   position: absolute;
   font-size: 2rem;
-  top: 1rem;
+  left: 1.5rem;
+  top: 0.7rem;
   text-transform: capitalize;
+  transition: all 0.3s ease-in;
 }
 .input {
   font-family: "Hanken Grotesk", sans-serif;
   font-weight: 400;
   border: none;
-  border-bottom: solid 2px #f5326c;
+  border-bottom: solid 2px #80319b;
   color: #f4f4f4;
   outline: none;
   background-color: transparent;
   width: 30rem;
   height: 4rem;
   border-radius: 3px;
-  font-size: 2rem;
   text-transform: capitalize;
   padding-left: 1.5rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease-in;
+  font-size: 20px;
 }
 .input:focus {
-  border-bottom: solid 2px #80319b;
-  font-size: 5px;
-  
+  border-bottom: solid 3px #80319b;
+}
+.input:focus + .label {
+  transform: translate(-1.5rem, -2rem);
+  font-size: 1.2rem;
 }
 
-.input:focus.label{  
-  transform: translateY(-1rem);
-  background-color: red;
-
+.input:not(:placeholder-shown) + .label {
+  display: none;
+}
+.input_error {
+  display: none;
+  position: absolute;
+  left: 1.5rem;
+  top: 4.2rem;
+  color: #ee326c;
+}
+.input:invalid {
+  border-bottom: solid 3px #ee326c;
+}
+.input:invalid ~ .input_error {
+  display: block;
 }

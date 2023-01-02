@@ -1,0 +1,22 @@
+.icon_container {
+  width: 5rem;
+  height: 5rem;
+  background-color: #f5326c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  letter-spacing: 7px;
+  font-weight: 400;
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #f4f4f4;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}

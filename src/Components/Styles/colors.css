@@ -1,0 +1,24 @@
+.color1 {
+  background-color: #80319b;
+}
+.color2 {
+  background-color: #ee326c;
+}
+.color3 {
+  background-color: #ffb12a;
+}
+.color4 {
+  background-color: #1bb55f;
+}
+@media (max-width: 1500px) {
+  div[class*="color"] {
+    width: 15rem;
+    height: 8rem;
+    margin-bottom: 8rem;
+  }
+}
+@media (max-width: 900px) {
+  .no_img {
+    display: none;
+  }
+}

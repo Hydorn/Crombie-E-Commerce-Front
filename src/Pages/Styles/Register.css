@@ -1,0 +1,24 @@
+.register {
+  width: 70rem;
+  min-height: 55rem;
+}
+.register_name {
+  display: flex;
+  gap: 2rem;
+}
+
+.form_container.register input[type="email"] {
+  width: 62rem;
+}
+
+@media (max-width: 650px) {
+  .register_name {
+    flex-direction: column;
+  }
+  .form_container.register input[type="email"] {
+    width: 30rem;
+  }
+  .form_container {
+    margin-top: 10rem;
+  }
+}

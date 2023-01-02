@@ -1,4 +1,6 @@
 .header {
+  background-color: #000;
+  z-index: 5;
   position: fixed;
   display: flex;
   align-items: center;
@@ -31,7 +33,7 @@
 }
 .btn_container {
   height: 100%;
-  width: 50rem;
+  width: 40rem;
   color: #f4f4f4;
   font-size: 1.8rem;
   font-family: "Hanken Grotesk", sans-serif;
@@ -54,29 +56,26 @@
   border: solid 1px #f4f4f4;
   background-color: #f4f4f4;
   color: #000;
-  scale: 1.05;
+  transform: scaleX(1.05);
 }
 a {
   text-decoration: none;
   color: inherit;
 }
-@media (max-width:800px){
-  .header{
+@media (max-width: 800px) {
+  .header {
     justify-content: center;
   }
-  .header_logo_cont{
+  .header_logo_cont {
     margin-left: 0;
   }
-  .header a{
+  .header a {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .btn_container{
+  .btn_container {
     justify-content: center;
     padding: 2rem 0;
-  }
-  .products{
-    margin-top: 7rem;
   }
 }

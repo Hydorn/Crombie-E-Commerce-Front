@@ -1,31 +1,57 @@
-import Input from "../Components/Input";
-import { AiFillLock } from "react-icons/ai";
-import "./Styles/Login.css";
 import SubmitBtn from "../Components/SubmitBtn";
 import NavBar from "../Components/NavBar";
+import Input from "../Components/Input";
+import "./Styles/Login.css";
+import "./Styles/Register.css";
+import Colors from "../Components/Colors";
+import FormHeader from "../Components/FormHeader";
+import { FormProvider, useForm } from "react-hook-form";
 
 const Register = () => {
+  const methods = useForm();
+  const onSubmit = (data: any) => console.log(data);
+
   return (
     <>
-      <NavBar />
-      <div className="login_container">
-        <img className="img" src="/c27bb43.svg" alt="logo" />
-        <div className="form_container">
-          <div className="icon_container">
-            <AiFillLock className="icon" />
-          </div>
-          <h2 className="title">sign up</h2>
-          <Input type="text" placeholder="first name *" />
-          <Input type="text" placeholder="last name *" />
-          <Input type="email" placeholder="email address *" />
-          <Input type="password" placeholder="password *" />
-          <SubmitBtn value="Submit" />
-        </div>
-        <div className="no_img">
-          <div className="color1"></div>
-          <div className="color2"></div>
-          <div className="color3"></div>
-          <div className="color4"></div>
+      <div className="page_register_container">
+        <NavBar />
+        <div className="login_container ">
+          <img className="img" src="/c27bb43.svg" alt="logo" />
+
+          {/*Begining of register form*/}
+          <FormProvider {...methods}>
+            <form
+              className="form_container register"
+              onSubmit={methods.handleSubmit(onSubmit)}
+            >
+              <FormHeader title="sign up" />
+
+              <div className="register_name">
+                <Input
+                  type="text"
+                  name="first name"
+                  placeholder="first name *"
+                />
+                <Input type="text" name="last name" placeholder="last name *" />
+              </div>
+              <Input type="email" name="email" placeholder="email address *" />
+              <div className="register_name">
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="password *"
+                />
+                <Input
+                  type="password"
+                  name="repeat password"
+                  placeholder="repeat password *"
+                />
+              </div>
+              <SubmitBtn value="Submit" />
+            </form>
+          </FormProvider>
+          {/*End of register form*/}
+          <Colors />
         </div>
       </div>
     </>

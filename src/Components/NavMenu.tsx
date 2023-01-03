@@ -3,17 +3,13 @@ import { useUserContext } from "../Context/userContext";
 import "./Styles/navMenu.css";
 type NavMenuProps = {
   menu: boolean;
+  onClickLogOut?:()=>void;
 };
-const NavMenu: React.FC<NavMenuProps> = ({ menu }) => {
-  let navigate = useNavigate();
+const NavMenu: React.FC<NavMenuProps> = ({ menu,onClickLogOut }) => {
+ 
   const { handleSetValues, admin } = useUserContext();
 
-  const handleLogOut = () => {
-    handleSetValues("token", "");
-    handleSetValues("logged", false);
-    localStorage.removeItem("token");
-    return navigate("/login");
-  };
+ 
   return (
     <div className={`header_menu ${menu ? "" : "none"}`}>
       <div className="item">
@@ -24,7 +20,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menu }) => {
           <p>Administration</p>
         </div>
       ) : null}
-      <div onClick={handleLogOut} className="item">
+      <div onClick={onClickLogOut} className="item">
         <p>Log Out</p>
       </div>
     </div>

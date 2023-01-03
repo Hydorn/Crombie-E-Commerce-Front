@@ -1,25 +1,20 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useUserContext } from "../Context/userContext";
-import FormHeader from "./FormHeader";
-import Input from "./Input";
-import LoadingSpiner from "./LoadingSpiner";
 import "./Styles/loginForm.css";
+import url from "../constant";
+import FormHeader from "./FormHeader";
 import SubmitBtn from "./SubmitBtn";
+import Input from "./Input";
 
-/*
-    console.log(data);
-
-    */
 
 const LoginForm = () => {
-  const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { handleSetValues, ...values } = useUserContext();
   const methods = useForm();
 
   const onSubmit = async (data: any) => {
     setLoading(true);
-    const url = "http://localhost:3000/api";
     try {
       const res = await fetch(url + "/auth/login", {
         body: JSON.stringify(data),
@@ -36,9 +31,7 @@ const LoginForm = () => {
       console.log(error.message);
     }
   };
-  if (Loading) {
-    return <LoadingSpiner />;
-  } else {
+
     return (
       <FormProvider {...methods}>
         <form
@@ -49,10 +42,9 @@ const LoginForm = () => {
 
           <Input type="email" name="email" placeholder="email address *" />
           <Input type="password" name="password" placeholder="password *" />
-          <SubmitBtn value="Submit" />
+          <SubmitBtn loading={loading} value="Submit" />
         </form>
       </FormProvider>
     );
-  }
-};
+}
 export default LoginForm;

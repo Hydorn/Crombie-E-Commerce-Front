@@ -1,16 +1,16 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useUserContext } from "../Context/userContext";
+import url from "../constant";
 import FormHeader from "./FormHeader";
-import Input from "./Input";
 import "./Styles/registerForm.css";
 import SubmitBtn from "./SubmitBtn";
+import Input from "./Input";
 
 const RegisterForm = () => {
   const { handleSetValues, ...values } = useUserContext();
   const methods = useForm();
 
   const onSubmit = async (formData: any) => {
-    const url = "http://localhost:3000/api";
     console.log(formData);
     try {
       const res = await fetch(url + "/auth/register", {
@@ -21,6 +21,7 @@ const RegisterForm = () => {
         },
       });
       const data = await res.json();
+      console.log(data);
     } catch (error: any) {
       console.log(error.message);
     }
@@ -46,7 +47,7 @@ const RegisterForm = () => {
             placeholder="repeat password *"
           />
         </div>
-        <SubmitBtn value="Submit" />
+        <SubmitBtn loading value="Submit" />
       </form>
     </FormProvider>
   );

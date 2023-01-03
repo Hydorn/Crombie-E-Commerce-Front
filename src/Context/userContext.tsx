@@ -52,7 +52,6 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         };
 
         setValue(newValues);
-        console.log(newValues);
       });
     });
   }, [value.token]);

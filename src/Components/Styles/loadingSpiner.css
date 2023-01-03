@@ -1,9 +1,9 @@
 .loading_spiner {
-  width: 4rem;
-  height: 4rem;
+  width: 1.5rem;
+  height: 1.5em;
   border-radius: 50%;
-  border: solid 5px #252525;
-  border-top: solid 5px #1bb55f;
+  border: solid 3px #252525;
+  border-top: solid 3px #1bb55f;
   animation: spin 2s linear infinite;
 }
 

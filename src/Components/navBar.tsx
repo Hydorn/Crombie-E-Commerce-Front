@@ -1,12 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../Context/userContext";
 import NavMenu from "./NavMenu";
 import "./Styles/navBar.css";
 
 const NavBar = () => {
-  const { logged, firstName } = useUserContext();
+  const { logged, firstName, admin, handleSetValues } = useUserContext();
+  let navigate = useNavigate();
   const [menu, setMenu] = useState(false);
+
+  const handleLogOut = () => {
+    handleSetValues("token", "");
+    handleSetValues("logged", false);
+    localStorage.removeItem("token");
+    return navigate("/login");
+  };
 
   return (
     <header className="header">
@@ -23,7 +31,7 @@ const NavBar = () => {
             className="btn_user"
           >
             <p>{`Bienvenido ${firstName ? firstName : ""}`}</p>
-            <NavMenu menu={menu} />
+            <NavMenu menu={menu} onClickLogOut={handleLogOut}/>
           </div>
         </>
       ) : (

@@ -10,7 +10,6 @@ const Login = () => {
   const { logged } = useUserContext();
   let navigate = useNavigate();
   useEffect(() => {
-    console.log(logged);
     if (logged) return navigate("/");
   }, [logged]);
   return (

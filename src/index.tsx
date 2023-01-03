@@ -6,7 +6,7 @@ import ErrorPage from "./Pages/Error";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-
+import UserProvider from "./Context/userContext";
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -29,6 +29,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>
 );

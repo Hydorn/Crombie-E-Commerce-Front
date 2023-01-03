@@ -1,32 +1,24 @@
-import { FormProvider, useForm } from "react-hook-form";
 import "./Styles/Login.css";
-import Input from "../Components/Input";
-import SubmitBtn from "../Components/SubmitBtn";
 import NavBar from "../Components/NavBar";
 import Colors from "../Components/Colors";
-import FormHeader from "../Components/FormHeader";
+import LoginForm from "../Components/LoginForm";
+import { useUserContext } from "../Context/userContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
-  const methods = useForm();
-  const onSubmit = (data: any) => console.log(data);
+  const { logged } = useUserContext();
+  let navigate = useNavigate();
+  useEffect(() => {
+    console.log(logged);
+    if (logged) return navigate("/");
+  }, [logged]);
   return (
     <>
       <NavBar />
       <div className="login_container">
         <img className="img" src="/c27bb43.svg" alt="logo" />
-
-        <FormProvider {...methods}>
-          <form
-            className="form_container"
-            onSubmit={methods.handleSubmit(onSubmit)}
-          >
-            <FormHeader title="sign in" />
-            <Input type="email" name="email" placeholder="email address *" />
-            <Input type="password" name="password" placeholder="password *" />
-            <SubmitBtn value="Submit" />
-          </form>
-        </FormProvider>
-
+        <LoginForm />
         <Colors />
       </div>
     </>

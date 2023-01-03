@@ -1,5 +1,5 @@
 .register {
-  width: 70rem;
+  min-width: 70rem;
   min-height: 55rem;
 }
 .register_name {

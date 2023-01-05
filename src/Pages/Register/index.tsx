@@ -1,8 +1,8 @@
-import NavBar from "../Components/NavBar";
-import "./Styles/Login.css";
-import "./Styles/Register.css";
-import Colors from "../Components/Colors";
-import RegisterForm from "../Components/RegisterForm";
+import NavBar from "../../Components/NavBar";
+import "../Styles/Login.css";
+import "../Styles/Register.css";
+import Colors from "../../Components/Colors";
+import RegisterForm from "./RegisterForm";
 
 const Register = () => {
   return (

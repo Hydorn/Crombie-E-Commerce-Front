@@ -1,5 +1,8 @@
 import "./Styles/loadingSpiner.css";
-const LoadingSpiner = () => {
-  return <div className="loading_spiner"></div>;
+type LoadingSpinerProps = {
+  size?: string;
+};
+const LoadingSpiner: React.FC<LoadingSpinerProps> = ({ size }) => {
+  return <div className={"loading_spiner " + size}></div>;
 };
 export default LoadingSpiner;

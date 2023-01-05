@@ -1,15 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../Context/userContext";
 import "./Styles/navMenu.css";
 type NavMenuProps = {
   menu: boolean;
-  onClickLogOut?:()=>void;
+  onClickLogOut?: () => void;
 };
-const NavMenu: React.FC<NavMenuProps> = ({ menu,onClickLogOut }) => {
- 
+const NavMenu: React.FC<NavMenuProps> = ({ menu, onClickLogOut }) => {
   const { handleSetValues, admin } = useUserContext();
 
- 
   return (
     <div className={`header_menu ${menu ? "" : "none"}`}>
       <div className="item">
@@ -17,7 +15,9 @@ const NavMenu: React.FC<NavMenuProps> = ({ menu,onClickLogOut }) => {
       </div>
       {admin ? (
         <div className="item">
-          <p>Administration</p>
+          <Link to="/administration">
+            <p>Administration</p>
+          </Link>
         </div>
       ) : null}
       <div onClick={onClickLogOut} className="item">

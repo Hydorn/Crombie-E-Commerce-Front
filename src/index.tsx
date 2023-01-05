@@ -7,6 +7,9 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserProvider from "./Context/userContext";
+import ProyectDetails from "./Pages/ProyectDetails";
+import Admin from "./Pages/Admin";
+
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -21,6 +24,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/proyects/:id",
+    element: <ProyectDetails />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/administration",
+    element: <Admin />,
     errorElement: <ErrorPage />,
   },
 ]);

@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { useUserContext } from "../Context/userContext";
-import "./Styles/loginForm.css";
-import url from "../constant";
-import FormHeader from "./FormHeader";
-import SubmitBtn from "./SubmitBtn";
-import Input from "./Input";
-
+import { useUserContext } from "../../Context/userContext";
+import FormHeader from "../../Components/FormHeader";
+import SubmitBtn from "../../Components/SubmitBtn";
+import Input from "../../Components/Input";
+import url from "../../constant";
+import "../Styles/Login.css";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
@@ -32,19 +31,19 @@ const LoginForm = () => {
     }
   };
 
-    return (
-      <FormProvider {...methods}>
-        <form
-          className="form_container"
-          onSubmit={methods.handleSubmit(onSubmit)}
-        >
-          <FormHeader title="sign in" />
+  return (
+    <FormProvider {...methods}>
+      <form
+        className="form_container"
+        onSubmit={methods.handleSubmit(onSubmit)}
+      >
+        <FormHeader title="sign in" />
 
-          <Input type="email" name="email" placeholder="email address *" />
-          <Input type="password" name="password" placeholder="password *" />
-          <SubmitBtn loading={loading} value="Submit" />
-        </form>
-      </FormProvider>
-    );
-}
+        <Input type="email" name="email" placeholder="email address *" />
+        <Input type="password" name="password" placeholder="password *" />
+        <SubmitBtn loading={loading} value="Submit" />
+      </form>
+    </FormProvider>
+  );
+};
 export default LoginForm;

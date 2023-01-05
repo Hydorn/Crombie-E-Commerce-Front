@@ -1,8 +1,8 @@
-import "./Styles/Login.css";
-import NavBar from "../Components/NavBar";
-import Colors from "../Components/Colors";
-import LoginForm from "../Components/LoginForm";
-import { useUserContext } from "../Context/userContext";
+import "../Styles/Login.css";
+import NavBar from "../../Components/NavBar";
+import Colors from "../../Components/Colors";
+import LoginForm from "./LoginForm";
+import { useUserContext } from "../../Context/userContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 

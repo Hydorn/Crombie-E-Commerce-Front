@@ -6,7 +6,10 @@
   border-top: solid 3px #1bb55f;
   animation: spin 2s linear infinite;
 }
-
+.big {
+  width: 5rem;
+  height: 5em;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);

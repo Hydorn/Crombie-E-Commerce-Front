@@ -1,0 +1,61 @@
+.proyect_details_container {
+  border-left: solid 10vw #f4f4f403;
+  border-right: solid 10vw #f4f4f403;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 8rem;
+  text-align: center;
+  color: #f4f4f4;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+.proyect {
+  border-bottom: solid 1px #f4f4f406;
+}
+.proyect span {
+  font-weight: 800;
+}
+.proyect_title {
+  padding: 2rem 0;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+.proyect_description {
+  font-size: 1.5rem;
+  padding: 0 10rem;
+  text-align: left;
+}
+.proyect_email {
+  font-size: 1.5rem;
+  padding: 2rem 10rem;
+  text-align: left;
+}
+.score_title {
+  font-size: 2rem;
+  padding: 2rem 10rem;
+  text-align: left;
+}
+
+@media (max-width: 650px) {
+  .proyect_details_container {
+    padding-top: 14rem;
+  }
+  .proyect_title {
+    padding: 2rem;
+    font-size: 2.5rem;
+  }
+  .proyect_description {
+    font-size: 1.5rem;
+    padding: 2rem;
+    text-align: left;
+  }
+  .proyect_email {
+    font-size: 1.5rem;
+    padding: 2rem;
+    text-align: left;
+  }
+  .score_title {
+    font-size: 2rem;
+    padding: 2rem;
+    text-align: left;
+  }
+}

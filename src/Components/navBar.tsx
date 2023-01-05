@@ -31,7 +31,7 @@ const NavBar = () => {
             className="btn_user"
           >
             <p>{`Bienvenido ${firstName ? firstName : ""}`}</p>
-            <NavMenu menu={menu} onClickLogOut={handleLogOut}/>
+            <NavMenu menu={menu} onClickLogOut={handleLogOut} />
           </div>
         </>
       ) : (

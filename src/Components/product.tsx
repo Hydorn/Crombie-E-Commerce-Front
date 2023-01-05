@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Styles/product.css";
+import Votes from "./Votes";
 type ProductProps = {
   id: string;
   name: string;
@@ -15,23 +16,25 @@ const Product: React.FC<ProductProps> = ({
   score,
 }) => {
   return (
-    <div className="product_container">
-      <Link to={`proyects/${id}`}>
+    <Link to={`proyects/${id}`}>
+      <div className="product_container">
         <div className="product_img"></div>
         <div className="product_text">
           <h1 className="product_title">{name}</h1>
           <p>Description: {description}</p>
           <p>Contact: {contact}</p>
-          <div className="score">
+          {/*}          <div className="score">
             <span className="stars">
               {" "}
               &#9733; &#9733; &#9733; &#9733; &nbsp;
             </span>
             <span>(1598)</span>
           </div>
+        */}
         </div>
-      </Link>
-    </div>
+        <Votes />
+      </div>
+    </Link>
   );
 };
 

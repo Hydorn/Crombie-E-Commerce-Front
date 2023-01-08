@@ -1,0 +1,32 @@
+.review_container {
+  border-top: solid 1px #f4f4f406;
+  border-bottom: solid 1px #f4f4f406;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.review_header {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review_indentifier {
+  font-weight: 200;
+  font-size: 1.5rem;
+  color: #f4f4f466;
+}
+.review_content {
+  font-size: 1.6rem;
+  align-self: flex-start;
+  padding: 2rem;
+}
+.review_subtitle {
+  font-weight: 800;
+}
+.review_header .review_center {
+  margin: auto;
+  padding: 2rem;
+  color: #f4f4f466;
+  font-style: italic;
+}

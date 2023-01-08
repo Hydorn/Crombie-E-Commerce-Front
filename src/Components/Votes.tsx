@@ -1,6 +1,8 @@
 import { useState } from "react";
-
-const Votes = () => {
+type VotesProps = {
+  id: string;
+};
+const Votes: React.FC<VotesProps> = ({ id }) => {
   const [rating, setRating] = useState(4.7);
   const ratingRound = Math.round(rating);
   const proyectId = 222;
@@ -17,7 +19,6 @@ const Votes = () => {
   return (
     <div className="score">
       <span className="stars">{renderStars()} </span>
-      <span>(1598)</span>
     </div>
   );
 };

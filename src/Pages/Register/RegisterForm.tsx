@@ -1,9 +1,9 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { useUserContext } from "../../Context/userContext";
-import url from "../../constant";
-import FormHeader from "../../Components/FormHeader";
-import SubmitBtn from "../../Components/SubmitBtn";
-import Input from "../../Components/Input";
+import { useUserContext } from "Context/userContext";
+import url from "constant";
+import FormHeader from "Components/FormHeader";
+import SubmitBtn from "Components/SubmitBtn";
+import Input from "Components/Input";
 
 const RegisterForm = () => {
   const { handleSetValues, ...values } = useUserContext();

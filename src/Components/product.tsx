@@ -32,7 +32,7 @@ const Product: React.FC<ProductProps> = ({
           </div>
         */}
         </div>
-        <Votes />
+        <Votes id={id} />
       </div>
     </Link>
   );

@@ -5,7 +5,6 @@
   background-size: cover;
   margin-right: 1rem;
 }
-
 .product_container {
   background-color: #f4f4f418;
   display: flex;
@@ -27,25 +26,10 @@
 .product_title {
   text-transform: uppercase;
 }
-
 .product_text {
   flex: 1;
   height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-}
-
-.score {
-  display: flex;
-  align-items: baseline;
-  position: absolute;
-  right: 5%;
-  bottom: 1rem;
-  color: #ffb12a;
-  font-size: 1.5rem;
-}
-
-.score .stars {
-  text-shadow: 1px 1px 2px #ffb12a;
 }

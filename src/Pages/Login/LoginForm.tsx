@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { useUserContext } from "../../Context/userContext";
-import FormHeader from "../../Components/FormHeader";
-import SubmitBtn from "../../Components/SubmitBtn";
-import Input from "../../Components/Input";
-import url from "../../constant";
+import { useUserContext } from "Context/userContext";
+import FormHeader from "Components/FormHeader";
+import SubmitBtn from "Components/SubmitBtn";
+import Input from "Components/Input";
+import url from "constant";
 import "../Styles/Login.css";
 
 const LoginForm = () => {

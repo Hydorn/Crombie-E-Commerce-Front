@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Product from "../Components/Product";
-import url from "../constant";
+import Product from "Components/Product";
+import url from "constant";
 
 type FetchedData = {
   id: string;

@@ -1,29 +1,14 @@
 import { useParams } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import "./Styles/ProyectDetails.css";
-import url from "../constant";
 import LoadingSpiner from "../Components/LoadingSpiner";
-
-import { useTypedFetch } from "Hooks/useTypedFetch";
-import RenderProyectReviews from "Utilities/RenderProyectReviews";
-
-type FetchedData = {
-  id: string;
-  name: string;
-  description: string;
-  contactEmail: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: null;
-};
+import { useProyectsContext } from "Context/proyectsContext";
+import ProyectReviews from "Components/ProyectReviews";
 
 const ProyectDetails = () => {
   const { id } = useParams();
-  const proyectPath = "/proyects/" + id;
-  const { data: proyectData, loading } = useTypedFetch<FetchedData>({
-    url,
-    path: proyectPath,
-  });
+  const proyects = useProyectsContext();
+  const proyectData = proyects.find((el) => el.id === id);
 
   if (!proyectData) return <LoadingSpiner size={"big"} />;
   else
@@ -42,6 +27,7 @@ const ProyectDetails = () => {
           </section>
           <div className="proyect_details_scores">
             <h2 className="score_title">Proyect Reviews:</h2>
+            <ProyectReviews id={id} />
           </div>
         </div>
       </>

@@ -8,6 +8,7 @@ import AdminRoute from "./AdminRoute";
 import Login from "Pages/Login";
 import Admin from "Pages/Admin";
 import Home from "Pages/Home";
+import UserSettings from "Pages/UserSettings";
 
 const Navigate = () => {
   return (
@@ -20,6 +21,7 @@ const Navigate = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<LogedRoute />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<UserSettings />} />
           <Route element={<AdminRoute />}>
             <Route path="/administration" element={<Admin />} />
           </Route>

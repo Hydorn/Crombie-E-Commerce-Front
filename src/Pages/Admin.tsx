@@ -1,43 +1,33 @@
-import { useEffect, useState } from "react";
+import NavBar from "Components/NavBar";
 import Product from "Components/Product";
-import url from "constant";
-
-type FetchedData = {
-  id: string;
-  name: string;
-  description: string;
-  contactEmail: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: null;
-};
+import { useProyectsContext } from "Context/proyectsContext";
 
 const Admin = () => {
-  const [data, setData] = useState<FetchedData[]>([]);
-  useEffect(() => {
-    try {
-      fetch(url + "/proyects")
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-        });
-    } catch (err: any) {
-      console.log(err.message);
-    }
-  }, []);
+  const proyectsData = useProyectsContext();
+
   return (
     <>
-      {data.map((el: FetchedData) => {
-        return (
-          <Product
-            id={el.id}
-            name={el.name}
-            description={el.description}
-            contact={el.contactEmail}
-            score={0}
-          />
-        );
-      })}
+      <NavBar />
+      <div className="profile_container">
+        <h1 className="profile_title">Administration pannel</h1>
+        <div className="user_scores">
+          <h2 className="reviews_title">Proyects List:</h2>
+          <>
+            {proyectsData.map((el) => {
+              return (
+                <Product
+                  key={el.id}
+                  id={el.id}
+                  name={el.name}
+                  description={el.description}
+                  contact={el.contactEmail}
+                  score={0}
+                />
+              );
+            })}
+          </>
+        </div>
+      </div>
     </>
   );
 };

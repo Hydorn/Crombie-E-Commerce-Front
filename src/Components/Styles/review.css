@@ -5,6 +5,9 @@
   flex-direction: column;
   width: 80%;
 }
+.review_container:hover {
+  background-color: #f4f4f406;
+}
 .review_header {
   padding: 2rem;
   display: flex;
@@ -29,4 +32,7 @@
   padding: 2rem;
   color: #f4f4f466;
   font-style: italic;
+}
+.me_review {
+  background-color: #f4f4f416;
 }

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import UserProvider from "Context/userContext";
 import Navigate from "Navigate";
+import ProyectProvider from "Context/proyectsContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <Navigate />
+      <ProyectProvider>
+        <Navigate />
+      </ProyectProvider>
     </UserProvider>
   </React.StrictMode>
 );

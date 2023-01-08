@@ -10,7 +10,7 @@ const Votes: React.FC<VotesProps> = ({ id }) => {
   const renderStars = () => {
     let stars = [];
     for (let i = 0; i < ratingRound; i++) {
-      stars.push(<>&#9733;</>);
+      stars.push(<span key={i}>&#9733;</span>);
     }
     return stars;
   };

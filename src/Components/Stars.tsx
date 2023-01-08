@@ -8,7 +8,7 @@ const Stars: React.FC<StarsProps> = ({ starCount, size }) => {
     const stars = [];
     if (starCount > 5) starCount = 5;
     for (let i = 0; i < starCount; i++) {
-      stars.push(<>&#9733;</>);
+      stars.push(<span key={i}>&#9733;</span>);
     }
     return stars;
   };

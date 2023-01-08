@@ -13,8 +13,6 @@ type typedFetchReturn<T> = {
 };
 
 export const fetcher = async <T,>({ url, path }: RequestConfig): Promise<T> => {
-  console.log("hola");
-
   const apiResponse = await fetch(url + path);
   const apiData: T = await apiResponse.json();
   return apiData;

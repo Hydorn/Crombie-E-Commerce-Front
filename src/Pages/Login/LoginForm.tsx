@@ -9,7 +9,7 @@ import "../Styles/Login.css";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
-  const { handleSetValues, ...values } = useUserContext();
+  const { handleSetValues } = useUserContext();
   const methods = useForm();
 
   const onSubmit = async (data: any) => {
@@ -23,7 +23,6 @@ const LoginForm = () => {
         },
       });
       const value = await res.json();
-      console.log(value.payload);
       localStorage.setItem("token", value.payload);
       handleSetValues("token", value.payload);
     } catch (error: any) {

@@ -1,0 +1,22 @@
+.settings {
+  background-color: #f4f4f406;
+  width: 50rem;
+  padding-bottom: 4rem;
+  text-align: center;
+  color: #f4f4f4;
+  font-family: "Hanken Grotesk", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings_title {
+  padding: 2rem;
+  font-size: 2.5rem;
+}
+.settings_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

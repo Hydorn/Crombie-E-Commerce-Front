@@ -6,19 +6,19 @@
   margin-right: 1rem;
 }
 .product_container {
-  background-color: #f4f4f418;
   display: flex;
   align-items: center;
   gap: 2rem;
-  color: white;
-  font-family: "Hanken Grotesk", sans-serif;
-  border-bottom: solid 5px #80319b;
   min-height: 15rem;
-  width: 60rem;
+  max-width: 60rem;
   padding: 2rem;
   position: relative;
   cursor: pointer;
   z-index: 0;
+  background-color: #f4f4f418;
+  border-bottom: solid 5px #80319b;
+  font-family: "Hanken Grotesk", sans-serif;
+  color: white;
 }
 .product_container:hover {
   opacity: 0.8;
@@ -32,4 +32,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+.product_text * {
+  padding: 0.5rem;
+}
+@media (max-width: 750px) {
+  .product_container {
+    flex-direction: column;
+  }
+  .product_text {
+    align-items: center;
+  }
 }

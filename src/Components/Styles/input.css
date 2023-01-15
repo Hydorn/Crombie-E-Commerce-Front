@@ -20,8 +20,6 @@
   background-color: transparent;
   width: 30rem;
   height: 4rem;
-  border-radius: 3px;
-
   padding-left: 1.5rem;
   transition: all 0.3s ease-in;
   font-size: 20px;
@@ -30,7 +28,7 @@
   border-bottom: solid 3px #80319b;
 }
 .input:focus + .label {
-  transform: translate(-1.5rem, -2rem);
+  transform: translate(-1.5rem, -2.2rem);
   font-size: 1.2rem;
 }
 

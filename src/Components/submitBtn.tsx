@@ -5,11 +5,15 @@ type SubmitBtnProps = {
   loading: boolean;
 };
 const SubmitBtn: React.FC<SubmitBtnProps> = ({ value, loading }) => {
-  return <>
-  <input className="submitBtn" type="submit" value="submit" />
-  {loading?(<LoadingSpiner/>):(null)}
-
-  </>
+  return (
+    <>
+      <button className="submitBtn">
+        {loading ? <LoadingSpiner /> : null}
+        &nbsp;
+        {value}
+      </button>
+    </>
+  );
 };
 
 export default SubmitBtn;

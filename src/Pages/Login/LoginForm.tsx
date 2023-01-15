@@ -9,6 +9,7 @@ import "../Styles/Login.css";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { handleSetValues } = useUserContext();
   const methods = useForm();
 
@@ -23,10 +24,17 @@ const LoginForm = () => {
         },
       });
       const value = await res.json();
-      localStorage.setItem("token", value.payload);
-      handleSetValues("token", value.payload);
+
+      setLoading(false);
+      if (res.ok) {
+        localStorage.setItem("token", value.payload);
+        handleSetValues("token", value.payload);
+      } else {
+        setError(value);
+      }
     } catch (error: any) {
-      console.log(error.message);
+      setError(error.message);
+      setLoading(false);
     }
   };
 
@@ -39,8 +47,12 @@ const LoginForm = () => {
         <FormHeader title="sign in" />
 
         <Input type="email" name="email" placeholder="email address *" />
+
         <Input type="password" name="password" placeholder="password *" />
-        <SubmitBtn loading={loading} value="Submit" />
+        <div className="error_cont">
+          {error ? <span className="error">&#9888; {error}</span> : null}
+          <SubmitBtn loading={loading} value="Login" />
+        </div>
       </form>
     </FormProvider>
   );

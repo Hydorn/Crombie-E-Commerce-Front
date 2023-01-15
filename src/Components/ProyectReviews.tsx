@@ -4,7 +4,6 @@ import { useTypedFetch } from "Hooks/useTypedFetch";
 import React, { useEffect, useState } from "react";
 import { FetchedRating } from "Utilities/types";
 import DataSpinner from "./DataSpinner";
-import NoReview from "./NoReview";
 import Review from "./Review";
 
 type ProyectReviewsProps = {
@@ -43,6 +42,7 @@ const ProyectReviews: React.FC<ProyectReviewsProps> = ({ id }) => {
           punctuation={myReview.punctuation}
           comments={myReview.comments}
           myReview={"me_review"}
+          editModal={true}
         />
       ) : null}
       {(ratingsData || [])

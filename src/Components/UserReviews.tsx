@@ -30,6 +30,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ id }) => {
               identifier={el.proyectID}
               punctuation={el.punctuation}
               comments={el.comments}
+              editModal={true}
             />
           );
         })}

@@ -1,17 +1,18 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { useUserContext } from "Context/userContext";
 import url from "constant";
 import FormHeader from "Components/FormHeader";
 import SubmitBtn from "Components/SubmitBtn";
 import Input from "Components/Input";
+import { useState } from "react";
 
 const RegisterForm = () => {
-  const { handleSetValues, ...values } = useUserContext();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const methods = useForm();
 
   const onSubmit = async (formData: any) => {
-    console.log(formData);
     try {
+      setLoading(true);
       const res = await fetch(url + "/auth/register", {
         body: JSON.stringify(formData),
         method: "POST",
@@ -20,9 +21,12 @@ const RegisterForm = () => {
         },
       });
       const data = await res.json();
-      console.log(data);
+
+      setLoading(false);
+      if (!res.ok) setError(data);
     } catch (error: any) {
-      console.log(error.message);
+      setError(error.message);
+      setLoading(false);
     }
   };
   return (
@@ -46,7 +50,10 @@ const RegisterForm = () => {
             placeholder="repeat password *"
           />
         </div>
-        <SubmitBtn loading value="Submit" />
+        <div className="error_cont">
+          {error ? <span className="error">&#9888; {error}</span> : null}
+          <SubmitBtn loading={loading} value="Register" />
+        </div>
       </form>
     </FormProvider>
   );

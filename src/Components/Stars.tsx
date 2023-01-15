@@ -1,3 +1,4 @@
+import { start } from "repl";
 import "./Styles/stars.css";
 type StarsProps = {
   starCount: number;
@@ -7,8 +8,14 @@ const Stars: React.FC<StarsProps> = ({ starCount, size }) => {
   const renderStars = () => {
     const stars = [];
     if (starCount > 5) starCount = 5;
-    for (let i = 0; i < starCount; i++) {
-      stars.push(<span key={i}>&#9733;</span>);
+    for (let i = 0; i < 5; i++) {
+      if (i < starCount) stars.push(<span key={i}>&#9733;</span>);
+      else
+        stars.push(
+          <span key={i} className="not_bright">
+            &#9733;
+          </span>
+        );
     }
     return stars;
   };

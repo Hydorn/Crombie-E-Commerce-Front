@@ -14,7 +14,18 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
+.error_cont {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.error {
+  width: 100%;
+  top: -2rem;
+  text-align: center;
+  color: #ee326c;
+  font-size: 1.2rem;
+}
 @media (max-width: 1500px) {
   .login_container {
     width: 100vw;

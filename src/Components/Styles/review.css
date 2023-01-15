@@ -1,4 +1,5 @@
 .review_container {
+  position: relative;
   border-top: solid 1px #f4f4f406;
   border-bottom: solid 1px #f4f4f406;
   display: flex;
@@ -22,7 +23,7 @@
 .review_content {
   font-size: 1.6rem;
   align-self: flex-start;
-  padding: 2rem;
+  padding: 0 0 2rem 2rem;
 }
 .review_subtitle {
   font-weight: 800;
@@ -35,4 +36,17 @@
 }
 .me_review {
   background-color: #f4f4f416;
+}
+.review_optional {
+  text-align: center;
+  display: flex;
+}
+.review_setting_icon {
+  margin: 0 2rem 1rem 0;
+  cursor: pointer;
+  margin-left: auto;
+}
+.no_comments {
+  color: #f4f4f466;
+  font-style: italic;
 }

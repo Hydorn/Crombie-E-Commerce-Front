@@ -8,6 +8,7 @@
   text-align: center;
   color: #f4f4f4;
   font-family: "Hanken Grotesk", sans-serif;
+  position: relative;
 }
 .proyect span {
   font-weight: 800;

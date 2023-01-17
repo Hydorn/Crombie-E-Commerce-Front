@@ -1,4 +1,7 @@
+import url from "constant";
+import { useUserContext } from "Context/userContext";
 import { useState } from "react";
+import LoadingSpiner from "./LoadingSpiner";
 import ReviewModal from "./ReviewModal";
 import Stars from "./Stars";
 import "./Styles/review.css";
@@ -25,7 +28,26 @@ const Review: React.FC<ReviewProps> = ({
   const handleModal = () => {
     setModal(!modal);
   };
-
+  const [loading, setLoading] = useState(false);
+  const { token } = useUserContext();
+  const handleOnClick = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch(url + "/ratings/" + id, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setLoading(false);
+    } catch (error: any) {
+      console.log(error.message);
+      setLoading(false);
+    }
+  };
   return (
     <>
       {modal && <ReviewModal handleModal={setModal} modal={modal} id={id} />}
@@ -51,14 +73,20 @@ const Review: React.FC<ReviewProps> = ({
           </p>
 
           {editModal ? (
-            <>
+            <div className="icons_container">
               <div
                 className="setting_icon review_setting_icon"
                 onClick={editModal ? handleModal : undefined}
               >
                 <span>&#9998;</span>
               </div>
-            </>
+              <div
+                className="setting_icon review_setting_icon"
+                onClick={handleOnClick}
+              >
+                {loading ? <LoadingSpiner /> : <span>&#128465;</span>}
+              </div>
+            </div>
           ) : null}
         </div>
       </div>

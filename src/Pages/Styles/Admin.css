@@ -5,11 +5,11 @@
   width: 100vw;
   min-height: 100vh;
   padding-top: 8rem;
-  text-align: center;
   color: #f4f4f4;
   font-family: "Hanken Grotesk", sans-serif;
 }
 .admin_title {
+  text-align: center;
   padding: 2rem 0;
   font-size: 2.5rem;
   text-transform: uppercase;

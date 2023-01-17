@@ -20,3 +20,15 @@
   flex-direction: column;
   align-items: center;
 }
+.settings_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user_btn_container {
+  width: 80%;
+  display: flex;
+  margin-top: 3rem;
+  gap: 2rem;
+}

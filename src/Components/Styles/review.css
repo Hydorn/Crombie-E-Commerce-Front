@@ -50,3 +50,21 @@
   color: #f4f4f466;
   font-style: italic;
 }
+.add_review {
+  position: absolute;
+  right: 0;
+  font-size: 1.6rem;
+  padding: 1rem;
+  border: solid 1px #f4f4f4;
+  border-radius: 5px;
+  margin-right: 2rem;
+}
+.add_review:hover {
+  background-color: #f4f4f416;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.icons_container {
+  display: flex;
+  margin-left: auto;
+}

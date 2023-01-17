@@ -2,14 +2,22 @@ import { useParams } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import "./Styles/ProyectDetails.css";
 import LoadingSpiner from "../Components/LoadingSpiner";
-import { useProyectsContext } from "Context/proyectsContext";
 import ProyectReviews from "Components/ProyectReviews";
+import { useEffect, useState } from "react";
+import { FetchedProyect } from "Utilities/types";
+import url from "constant";
 
 const ProyectDetails = () => {
   const { id } = useParams();
-  const proyects = useProyectsContext();
-  const proyectData = proyects.find((el) => el.id === id);
+  const [proyectData, setProyectData] = useState<FetchedProyect>();
 
+  useEffect(() => {
+    fetch(url + "/proyects/" + id)
+      .then((res) => res.json())
+      .then((data) => {
+        setProyectData(data);
+      });
+  }, [id]);
   if (!proyectData) return <LoadingSpiner size={"big"} />;
   else
     return (

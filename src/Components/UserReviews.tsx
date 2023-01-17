@@ -21,7 +21,7 @@ const UserReviews: React.FC<UserReviewsProps> = ({ id }) => {
   } else {
     return (
       <>
-        {ratingsData.map((el) => {
+        {ratingsData?.map((el) => {
           return (
             <Review
               key={el.id}

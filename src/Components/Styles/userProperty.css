@@ -25,3 +25,11 @@
   background-color: #f4f4f406;
   cursor: pointer;
 }
+.user_input {
+  font-size: 1.6rem;
+  padding: 1rem;
+  font-weight: 500;
+}
+.user_input:disabled {
+  background-color: transparent;
+}

@@ -1,4 +1,3 @@
-import url from "constant";
 import { useEffect, useState } from "react";
 
 type RequestConfig = {

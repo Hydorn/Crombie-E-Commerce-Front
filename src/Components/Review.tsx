@@ -41,13 +41,13 @@ const Review: React.FC<ReviewProps> = ({
         },
       });
       const data = await res.json();
-      console.log(data);
       setLoading(false);
     } catch (error: any) {
       console.log(error.message);
       setLoading(false);
     }
   };
+
   return (
     <>
       {modal && <ReviewModal handleModal={setModal} modal={modal} id={id} />}

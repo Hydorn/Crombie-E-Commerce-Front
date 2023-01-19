@@ -6,6 +6,8 @@ import ProyectReviews from "Components/ProyectReviews";
 import { useEffect, useState } from "react";
 import { FetchedProyect } from "Utilities/types";
 import url from "constant";
+import Votes from "Components/Votes";
+import ReviewProvider from "Context/useReviewContext";
 
 const ProyectDetails = () => {
   const { id } = useParams();
@@ -18,6 +20,7 @@ const ProyectDetails = () => {
         setProyectData(data);
       });
   }, [id]);
+
   if (!proyectData) return <LoadingSpiner size={"big"} />;
   else
     return (
@@ -34,8 +37,15 @@ const ProyectDetails = () => {
             </p>
           </section>
           <div className="proyect_details_scores">
-            <h2 className="score_title">Proyect Reviews:</h2>
-            <ProyectReviews id={id} />
+            <h2 className="score_title">
+              Proyect Reviews:
+              <div className="border">
+                <Votes id={id || ""} size={"big_star"} />
+              </div>
+            </h2>
+            <ReviewProvider id={id || ""}>
+              <ProyectReviews id={id} />
+            </ReviewProvider>
           </div>
         </div>
       </>

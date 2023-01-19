@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import url from "constant";
 import { useUserContext } from "Context/userContext";
 import { useParams } from "react-router-dom";
+import { useReviewContext } from "Context/useReviewContext";
+import { FetchedRating } from "Utilities/types";
 
 type ReviewModalProps = {
   handleModal: (param: boolean) => void;
@@ -23,7 +25,8 @@ const NewReviewModal: React.FC<ReviewModalProps> = ({ handleModal, modal }) => {
   const { id: idProyect } = useParams();
 
   const { handleSubmit, register } = useForm<FormData>();
-  const { token } = useUserContext();
+  const { token, firstName } = useUserContext();
+  const { data: myRatings, handleSetData } = useReviewContext();
 
   const onSubmit = handleSubmit(async (data: FormData) => {
     const bodyReq = {
@@ -50,6 +53,17 @@ const NewReviewModal: React.FC<ReviewModalProps> = ({ handleModal, modal }) => {
         setLoading(false);
         return;
       }
+      const newReview: FetchedRating = {
+        id: "",
+        userName: firstName,
+        userID: idUser,
+        proyectName: "",
+        proyectID: idProyect || "",
+        punctuation: data.punctuation,
+        comments: data.comments,
+      };
+
+      handleSetData(newReview);
       setLoading(false);
       handleModal(!modal);
     } catch (error: any) {

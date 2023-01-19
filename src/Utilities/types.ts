@@ -15,7 +15,7 @@ export type FetchedRating = {
   proyectName: string;
   proyectID: string;
   punctuation: number;
-  comments?: string | null;
+  comments: string;
 };
 
 export type FetchedUser = {
@@ -26,4 +26,9 @@ export type FetchedUser = {
   createdAt: Date;
   updatedAt: Date;
   deletedAt: null;
+};
+
+export type FetchedAvg = {
+  average: number;
+  votes: number;
 };

@@ -2,38 +2,55 @@ import NavBar from "Components/NavBar";
 import SubmitBtn from "Components/SubmitBtn";
 import UserPropery from "Components/UserProperty";
 import { useUserContext } from "Context/userContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { FetchedUser } from "Utilities/types";
 import "./Styles/UserSettings.css";
 
 const UserSettings = () => {
   const [disabled, setDisabled] = useState(true);
-  const { firstName, lastName } = useUserContext();
+  const { token } = useUserContext();
+  const [userProperties, setUserProperties] = useState<FetchedUser>();
+  useEffect(() => {
+    fetch("http://localhost:3000/api/me", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data: FetchedUser) => {
+        setUserProperties(data);
+      });
+  }, [token]);
   const methods = useForm();
   const handleOnCLick = () => {
     setDisabled(!disabled);
   };
 
-  const onSubmit = methods.handleSubmit((data) => console.log(data));
+  const onSubmit = methods.handleSubmit((data) => {});
 
   return (
     <>
       <NavBar />
       <div className="settings">
-        <h1 className="settings_title">User: {firstName + " " + lastName}</h1>
+        <h1 className="settings_title">
+          User: {userProperties?.firstName + " " + userProperties?.lastName}
+        </h1>
         <div className="settings_container">
           <FormProvider {...methods}>
             <form className="settings_form" onSubmit={onSubmit}>
               <UserPropery
                 name="First Name: "
                 keyName="firstName"
-                value={firstName}
+                value={userProperties?.firstName || ""}
                 disable={disabled}
               />
               <UserPropery
                 name="Last Name: "
                 keyName="lastName"
-                value={lastName}
+                value={userProperties?.lastName || ""}
                 disable={disabled}
               />
               <div className="user_btn_container">

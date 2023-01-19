@@ -1,6 +1,5 @@
-import url from "constant";
 import { useUserContext } from "Context/userContext";
-import { useTypedFetch } from "Hooks/useTypedFetch";
+import { useReviewContext } from "Context/useReviewContext";
 import React, { useEffect, useState } from "react";
 import { FetchedRating } from "Utilities/types";
 import DataSpinner from "./DataSpinner";
@@ -12,21 +11,20 @@ type ProyectReviewsProps = {
 };
 const ProyectReviews: React.FC<ProyectReviewsProps> = ({ id }) => {
   const [myReview, setMyReview] = useState<FetchedRating | undefined>();
-  const { id: userID } = useUserContext();
+  const { data: ratingsData, loading } = useReviewContext();
   const [modal, setModal] = useState(false);
+  const { id: userID, logged } = useUserContext();
+
+  console.log(ratingsData);
+
   const handleModal = () => {
     setModal(!modal);
   };
-  const { data: ratingsData, loading } = useTypedFetch<FetchedRating[]>({
-    url,
-    path: "/ratings?proyectID=" + id,
-  });
 
   useEffect(() => {
     const review = ratingsData?.find((el) => el.userID === userID);
     setMyReview(review);
   }, [ratingsData, userID]);
-  // myReview={userID == el.userID ? "me_review" : ""}
 
   return (
     <>
@@ -48,11 +46,11 @@ const ProyectReviews: React.FC<ProyectReviewsProps> = ({ id }) => {
           myReview={"me_review"}
           editModal={true}
         />
-      ) : (
+      ) : logged ? (
         <div className="add_review" onClick={handleModal}>
           Add review <span>&#10010;</span>
         </div>
-      )}
+      ) : null}
       {(ratingsData || [])
         .filter((el) => el.userID !== userID)
         .map((el) => (

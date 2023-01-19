@@ -1,4 +1,3 @@
-import { start } from "repl";
 import "./Styles/stars.css";
 type StarsProps = {
   starCount: number;
@@ -23,7 +22,9 @@ const Stars: React.FC<StarsProps> = ({ starCount, size }) => {
 
   return (
     <div className={"score " + size}>
-      <span className="stars">{renderStars()} </span>
+      <span className="stars">
+        {renderStars()} &nbsp; ({starCount}/5)
+      </span>
     </div>
   );
 };

@@ -32,3 +32,9 @@
   margin-top: 3rem;
   gap: 2rem;
 }
+.border {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: solid 1px #ffb12a;
+  border-radius: 5px;
+}

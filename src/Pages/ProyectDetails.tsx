@@ -43,7 +43,7 @@ const ProyectDetails = () => {
                 <Votes id={id || ""} size={"big_star"} />
               </div>
             </h2>
-            <ReviewProvider id={id || ""}>
+            <ReviewProvider id={id || ""} fetchType={"proyect"}>
               <ProyectReviews id={id} />
             </ReviewProvider>
           </div>

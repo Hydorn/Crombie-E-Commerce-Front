@@ -23,14 +23,6 @@ const Product: React.FC<ProductProps> = ({
           <h1 className="product_title">{name}</h1>
           <p>Description: {description}</p>
           <p>Contact: {contact}</p>
-          {/*}          <div className="score">
-            <span className="stars">
-              {" "}
-              &#9733; &#9733; &#9733; &#9733; &nbsp;
-            </span>
-            <span>(1598)</span>
-          </div>
-        */}
         </div>
         <Votes id={id} />
       </div>

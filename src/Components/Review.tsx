@@ -1,5 +1,6 @@
 import url from "constant";
 import { useUserContext } from "Context/userContext";
+import { useReviewContext } from "Context/useReviewContext";
 import { useState } from "react";
 import LoadingSpiner from "./LoadingSpiner";
 import ReviewModal from "./ReviewModal";
@@ -14,6 +15,7 @@ type ReviewProps = {
   comments: string | null | undefined;
   myReview?: string;
   editModal?: boolean | undefined;
+  loadingData?: boolean;
 };
 const Review: React.FC<ReviewProps> = ({
   id,
@@ -28,8 +30,10 @@ const Review: React.FC<ReviewProps> = ({
   const handleModal = () => {
     setModal(!modal);
   };
+  const { dataFetch } = useReviewContext();
   const [loading, setLoading] = useState(false);
   const { token } = useUserContext();
+
   const handleOnClick = async () => {
     try {
       setLoading(true);
@@ -39,9 +43,11 @@ const Review: React.FC<ReviewProps> = ({
           "content-type": "application/json",
           authorization: `Bearer ${token}`,
         },
-      });
-      const data = await res.json();
+      }).then((res) => res.json());
+
       setLoading(false);
+
+      dataFetch();
     } catch (error: any) {
       console.log(error.message);
       setLoading(false);

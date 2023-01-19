@@ -2,7 +2,7 @@ import { useUserContext } from "Context/userContext";
 import { useReviewContext } from "Context/useReviewContext";
 import React, { useEffect, useState } from "react";
 import { FetchedRating } from "Utilities/types";
-import DataSpinner from "./DataSpinner";
+import LoadingSpiner from "./LoadingSpiner";
 import NewReviewModal from "./NewReviewModal";
 import Review from "./Review";
 
@@ -15,8 +15,6 @@ const ProyectReviews: React.FC<ProyectReviewsProps> = ({ id }) => {
   const [modal, setModal] = useState(false);
   const { id: userID, logged } = useUserContext();
 
-  console.log(ratingsData);
-
   const handleModal = () => {
     setModal(!modal);
   };
@@ -26,15 +24,11 @@ const ProyectReviews: React.FC<ProyectReviewsProps> = ({ id }) => {
     setMyReview(review);
   }, [ratingsData, userID]);
 
+  if (loading) return <LoadingSpiner size="big" />;
   return (
     <>
-      <DataSpinner
-        loading={loading}
-        empty={Boolean(!ratingsData?.length)}
-        emptyText={"No reviews were made yet"}
-        className={"review_container"}
-      />
       {modal && <NewReviewModal handleModal={setModal} modal={modal} />}
+
       {myReview ? (
         <Review
           key={myReview.id}

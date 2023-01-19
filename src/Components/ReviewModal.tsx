@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import url from "constant";
 import { useUserContext } from "Context/userContext";
+import { useReviewContext } from "Context/useReviewContext";
 
 type ReviewModalProps = {
   handleModal: (param: boolean) => void;
@@ -26,6 +27,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({
 
   const { handleSubmit, register } = useForm<FormData>();
   const { token } = useUserContext();
+  const { dataFetch } = useReviewContext();
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -46,6 +48,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({
 
       setLoading(false);
       handleModal(!modal);
+      dataFetch();
     } catch (error: any) {
       setLoading(false);
       setError(error.message);

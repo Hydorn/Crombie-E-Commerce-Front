@@ -14,15 +14,16 @@ const initialState = {
       comments: "",
     } as FetchedRating,
   ],
-  handleSetData: (param: FetchedRating) => {},
+  dataFetch: (param: void) => {},
   loading: false,
 };
 const ReviewContext = React.createContext(initialState);
 
-const ReviewProvider: React.FC<{ children: React.ReactNode; id: string }> = ({
-  children,
-  id,
-}) => {
+const ReviewProvider: React.FC<{
+  children: React.ReactNode;
+  id: string;
+  fetchType: "proyect" | "user";
+}> = ({ children, id, fetchType }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<FetchedRating[]>([
     {
@@ -36,22 +37,20 @@ const ReviewProvider: React.FC<{ children: React.ReactNode; id: string }> = ({
     },
   ]);
 
-  const handleSetData = (param: FetchedRating) => {
-    setData((prev) => [...prev, param]);
+  const dataFetch = async () => {
+    setLoading(true);
+    const res = await fetch(url + `/ratings?${fetchType}ID=` + id);
+    const reviews = await res.json();
+    setData(reviews);
+    setLoading(false);
   };
 
   useEffect(() => {
-    setLoading(true);
-    fetch(url + "/ratings?proyectID=" + id)
-      .then((res) => res.json())
-      .then((reviews) => {
-        setData(reviews);
-        setLoading(false);
-      });
+    dataFetch();
   }, [id]);
 
   return (
-    <ReviewContext.Provider value={{ data, handleSetData, loading }}>
+    <ReviewContext.Provider value={{ data, dataFetch, loading }}>
       {children}
     </ReviewContext.Provider>
   );

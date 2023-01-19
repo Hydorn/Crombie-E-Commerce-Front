@@ -45,6 +45,9 @@
   margin: 0 2rem 1rem 0;
   cursor: pointer;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .no_comments {
   color: #f4f4f466;

@@ -37,7 +37,7 @@ const Review: React.FC<ReviewProps> = ({
   const handleOnClick = async () => {
     try {
       setLoading(true);
-      const res = await fetch(url + "/ratings/" + id, {
+      await fetch(url + "/ratings/" + id, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -68,14 +68,17 @@ const Review: React.FC<ReviewProps> = ({
         </div>
         <div className="review_optional">
           <p className="review_content">
-            <span className="review_subtitle">Comments: </span>
-            {comments ? (
-              <span>{comments}</span>
-            ) : (
-              <span className="no_comments">
-                No comments were made for this proyect
-              </span>
-            )}
+            {
+              comments ? (
+                <>
+                  <span className="review_subtitle">Comments: </span>
+                  <span>{comments}</span>
+                </>
+              ) : null
+              // <span className="no_comments">
+              //   No comments were made for this proyect
+              // </span>
+            }
           </p>
 
           {editModal ? (

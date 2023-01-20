@@ -29,6 +29,8 @@ const UserSettings = () => {
     setDisabled(!disabled);
   };
 
+  console.log(userProperties);
+
   const onSubmit = methods.handleSubmit((data) => {});
 
   return (

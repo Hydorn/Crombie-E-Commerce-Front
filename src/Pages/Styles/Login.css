@@ -2,6 +2,10 @@
   width: 100vw;
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 .form_container {
   background-color: #f4f4f418;

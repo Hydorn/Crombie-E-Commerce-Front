@@ -3,7 +3,7 @@ import "./Styles/userProperty.css";
 type UserProperyProps = {
   name: string;
   value: string;
-  disable: boolean;
+  disable?: boolean;
   keyName: string;
 };
 const UserPropery: React.FC<UserProperyProps> = ({
@@ -21,7 +21,7 @@ const UserPropery: React.FC<UserProperyProps> = ({
           {...register(keyName, { required: "Required" })}
           className="user_input"
           type={"text"}
-          value={String(value)}
+          defaultValue={String(value)}
           disabled={disable}
         />
       </span>

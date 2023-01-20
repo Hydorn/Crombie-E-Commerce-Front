@@ -1,28 +1,31 @@
 import NavBar from "Components/NavBar";
 import Product from "Components/Product";
 import url from "constant";
-import { useEffect, useState } from "react";
+import { useTypedFetch } from "Hooks/useTypedFetch";
+import { Link } from "react-router-dom";
 import { FetchedProyect } from "Utilities/types";
 import "./Styles/Admin.css";
 
 const Admin = () => {
-  const [proyectsData, setProyectData] = useState<FetchedProyect[]>();
+  const { data: proyectsData } = useTypedFetch<FetchedProyect[]>({
+    url,
+    path: "/proyects",
+  });
 
-  useEffect(() => {
-    fetch(url + "/proyects")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProyectData(data);
-      });
-  }, []);
   return (
     <>
       <NavBar />
       <div className="admin_container">
         <h1 className="admin_title">Administration pannel</h1>
         <div className="proyects_list">
-          <h2 className="proyects_title">Proyects List:</h2>
+          <div className="title_container">
+            <h2 className="proyects_title">Proyects List:</h2>
+            <Link to={"/administration/new-proyect"}>
+              <div className="add_proyect">
+                Add new Proyect <span>&#10010;</span>
+              </div>
+            </Link>
+          </div>
           <div className="admin_proyect_container">
             {proyectsData?.map((el) => {
               return (
@@ -32,7 +35,6 @@ const Admin = () => {
                   name={el.name}
                   description={el.description}
                   contact={el.contactEmail}
-                  score={0}
                 />
               );
             })}

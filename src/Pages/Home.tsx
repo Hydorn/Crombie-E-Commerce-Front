@@ -30,7 +30,6 @@ const Home = () => {
                   name={el.name}
                   description={el.description}
                   contact={el.contactEmail}
-                  score={0}
                 />
               );
             })}

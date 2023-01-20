@@ -1,12 +1,15 @@
 .admin_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 8rem;
   border-left: solid 10vw #000;
   border-right: solid 10vw #000;
+  font-family: "Hanken Grotesk", sans-serif;
   background-color: #f4f4f406;
   width: 100vw;
   min-height: 100vh;
-  padding-top: 8rem;
   color: #f4f4f4;
-  font-family: "Hanken Grotesk", sans-serif;
 }
 .admin_title {
   text-align: center;
@@ -21,7 +24,7 @@
 }
 .proyects_title {
   font-size: 2rem;
-  padding: 2rem 0rem 4rem 10rem;
+
   align-self: flex-start;
 }
 .admin_proyect_container {
@@ -29,8 +32,20 @@
   flex-direction: column;
   gap: 5rem;
 }
-@media (max-width: 650px) {
-  .admin_container {
-    padding-top: 14rem;
-  }
+.title_container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5rem;
+}
+.add_proyect {
+  font-size: 1.6rem;
+  padding: 1rem;
+  border: solid 1px #f4f4f4;
+  border-radius: 5px;
+}
+.add_proyect:hover {
+  background-color: #f4f4f416;
+  cursor: pointer;
 }

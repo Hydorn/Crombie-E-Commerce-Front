@@ -6,6 +6,9 @@
   flex-direction: column;
   width: 80%;
 }
+.review_container:last-child {
+  margin-bottom: 5rem;
+}
 .review_container:hover {
   background-color: #f4f4f406;
 }
@@ -23,7 +26,8 @@
 .review_content {
   font-size: 1.6rem;
   align-self: flex-start;
-  padding: 0 0 2rem 2rem;
+  padding: 0 2rem 2rem 2rem;
+  text-align: justify;
 }
 .review_subtitle {
   font-weight: 800;
@@ -70,4 +74,16 @@
 .icons_container {
   display: flex;
   margin-left: auto;
+}
+@media (max-width: 650px) {
+  .score {
+    order: -2;
+    margin-top: 2rem;
+  }
+  .icons_container {
+    margin: auto;
+  }
+  .review_optional {
+    flex-direction: column;
+  }
 }

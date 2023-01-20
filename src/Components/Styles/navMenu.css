@@ -7,6 +7,7 @@
 }
 .header_menu .item {
   padding: 1.5rem 2rem;
+  width: 100%;
 }
 .header_menu .item:hover {
   padding: 1.5rem 2rem;

@@ -20,6 +20,9 @@
   font-family: "Hanken Grotesk", sans-serif;
   color: white;
 }
+.product_container:last-child {
+  margin-bottom: 5rem;
+}
 .product_container:hover {
   opacity: 0.8;
 }
@@ -36,11 +39,17 @@
 .product_text * {
   padding: 0.5rem;
 }
+.product_button {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 750px) {
-  .product_container {
-    flex-direction: column;
-  }
   .product_text {
     align-items: center;
+  }
+  .product_container {
+    flex-direction: column;
   }
 }

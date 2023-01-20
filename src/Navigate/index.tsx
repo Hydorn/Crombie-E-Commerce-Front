@@ -9,6 +9,8 @@ import Login from "Pages/Login";
 import Admin from "Pages/Admin";
 import Home from "Pages/Home";
 import UserSettings from "Pages/UserSettings";
+import EditProyect from "Pages/EditProyect";
+import NewProyect from "Pages/NewProyect";
 
 const Navigate = () => {
   return (
@@ -24,6 +26,14 @@ const Navigate = () => {
           <Route path="/settings" element={<UserSettings />} />
           <Route element={<AdminRoute />}>
             <Route path="/administration" element={<Admin />} />
+            <Route
+              path="administration/proyects/:id"
+              element={<EditProyect />}
+            />
+            <Route
+              path="/administration/new-proyect"
+              element={<NewProyect />}
+            />
           </Route>
         </Route>
         <Route path="*" element={<ErrorPage />} />

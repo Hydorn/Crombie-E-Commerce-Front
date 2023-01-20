@@ -1,0 +1,16 @@
+.star_rating button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.star_rating span {
+  font-size: 2.5rem;
+}
+.bright {
+  color: #ffb12a;
+}
+.not_bright {
+  color: #ffb12a;
+  opacity: 0.2;
+}

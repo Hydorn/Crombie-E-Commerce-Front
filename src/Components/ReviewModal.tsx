@@ -1,11 +1,12 @@
+import { useReviewContext } from "Context/useReviewContext";
+import { useUserContext } from "Context/userContext";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 import "./Styles/reviewModal.css";
 import "./Styles/input.css";
+import StarRating from "./StarRating";
 import SubmitBtn from "./SubmitBtn";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
 import url from "constant";
-import { useUserContext } from "Context/userContext";
-import { useReviewContext } from "Context/useReviewContext";
 
 type ReviewModalProps = {
   handleModal: (param: boolean) => void;
@@ -24,28 +25,35 @@ const ReviewModal: React.FC<ReviewModalProps> = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
   const { handleSubmit, register } = useForm<FormData>();
-  const { token } = useUserContext();
   const { dataFetch } = useReviewContext();
+  const { token } = useUserContext();
+
+  const [rating, setRating] = useState(0);
+  const handleSetRating = (param: number) => {
+    setRating(param);
+  };
 
   const onSubmit = handleSubmit(async (data) => {
     try {
       setLoading(true);
-      console.log(id);
+
+      const bodyReq = {
+        punctuation: rating,
+        comments: data.comments,
+      };
 
       const res = await fetch(url + "/ratings/" + id, {
-        body: JSON.stringify(data),
+        body: JSON.stringify(bodyReq),
         method: "PUT",
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${token}`,
         },
       });
+
       const value = await res.json();
-
       if (!res.ok) setError(value);
-
       setLoading(false);
       handleModal(!modal);
       dataFetch();
@@ -64,15 +72,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({
         <form onSubmit={onSubmit} className="review_form">
           {/* // */}
           <label className="input_text">
-            <input
-              type="number"
-              className="input"
-              placeholder=" "
-              {...register("punctuation")}
-              min={1}
-              max={5}
-            />
-            <span className="label">Punctuation</span>
+            <StarRating rating={rating} handleSetRating={handleSetRating} />
             <span className="input_error">&#9888; Out of range</span>
           </label>
           {/* // */}

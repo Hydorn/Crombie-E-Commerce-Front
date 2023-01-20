@@ -7,6 +7,7 @@ import url from "constant";
 import { useUserContext } from "Context/userContext";
 import { useParams } from "react-router-dom";
 import { useReviewContext } from "Context/useReviewContext";
+import StarRating from "./StarRating";
 
 type ReviewModalProps = {
   handleModal: (param: boolean) => void;
@@ -18,8 +19,14 @@ type FormData = {
 };
 
 const NewReviewModal: React.FC<ReviewModalProps> = ({ handleModal, modal }) => {
+  const [rating, setRating] = useState(0);
+  const handleSetRating = (param: number) => {
+    setRating(param);
+  };
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
   const { id: idUser } = useUserContext();
   const { id: idProyect } = useParams();
 
@@ -30,13 +37,11 @@ const NewReviewModal: React.FC<ReviewModalProps> = ({ handleModal, modal }) => {
   const onSubmit = handleSubmit(async (data: FormData) => {
     const bodyReq = {
       ...data,
+      punctuation: rating,
       idProyect,
       idUser,
     };
-
     try {
-      setLoading(true);
-
       const res = await fetch(url + "/ratings", {
         body: JSON.stringify(bodyReq),
         method: "POST",
@@ -71,15 +76,8 @@ const NewReviewModal: React.FC<ReviewModalProps> = ({ handleModal, modal }) => {
         <form onSubmit={onSubmit} className="review_form">
           {/* // */}
           <label className="input_text">
-            <input
-              type="number"
-              className="input"
-              placeholder=" "
-              {...register("punctuation")}
-              min={1}
-              max={5}
-            />
-            <span className="label">Punctuation</span>
+            <StarRating rating={rating} handleSetRating={handleSetRating} />
+
             <span className="input_error">&#9888; Out of range</span>
           </label>
           {/* // */}

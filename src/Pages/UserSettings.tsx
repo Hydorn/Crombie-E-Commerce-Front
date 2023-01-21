@@ -1,6 +1,7 @@
 import NavBar from "Components/NavBar";
 import SubmitBtn from "Components/SubmitBtn";
 import UserPropery from "Components/UserProperty";
+import url from "constant";
 import { useUserContext } from "Context/userContext";
 import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -8,10 +9,14 @@ import { FetchedUser } from "Utilities/types";
 import "./Styles/UserSettings.css";
 
 const UserSettings = () => {
-  const [disabled, setDisabled] = useState(true);
-  const { token } = useUserContext();
   const [userProperties, setUserProperties] = useState<FetchedUser>();
-  useEffect(() => {
+  const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { token, handleSetValues } = useUserContext();
+  const methods = useForm();
+
+  const fetchUser = () => {
     fetch("http://localhost:3000/api/me", {
       method: "GET",
       headers: {
@@ -23,15 +28,45 @@ const UserSettings = () => {
       .then((data: FetchedUser) => {
         setUserProperties(data);
       });
+  };
+
+  useEffect(() => {
+    fetchUser();
   }, [token]);
-  const methods = useForm();
+
   const handleOnCLick = () => {
     setDisabled(!disabled);
   };
 
-  console.log(userProperties);
+  const onSubmit = methods.handleSubmit(async (formData) => {
+    try {
+      setLoading(true);
+      const reqBody = {
+        id: userProperties?.id,
+        ...formData,
+      };
 
-  const onSubmit = methods.handleSubmit((data) => {});
+      const res = await fetch(url + "/user", {
+        body: JSON.stringify(reqBody),
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      });
+
+      setLoading(false);
+
+      if (res.ok) {
+        handleSetValues("firstName", "");
+        setDisabled(!disabled);
+        return;
+      }
+    } catch (error: any) {
+      setError(error.message);
+      setLoading(false);
+    }
+  });
 
   return (
     <>
@@ -55,11 +90,19 @@ const UserSettings = () => {
                 value={userProperties?.lastName || ""}
                 disable={disabled}
               />
+              <UserPropery
+                name="Password : "
+                keyName="password"
+                disable={disabled}
+                type={"password"}
+              />
+              {error ? <span className="error">&#9888; {error}</span> : null}
               <div className="user_btn_container">
                 <div className="submitBtn" onClick={handleOnCLick}>
                   &nbsp; Edit <span className="setting_icon">&#9998;</span>
                 </div>
-                <SubmitBtn value={"Submit"} loading={false} />
+
+                <SubmitBtn value={"Submit"} loading={loading} />
               </div>
             </form>
           </FormProvider>

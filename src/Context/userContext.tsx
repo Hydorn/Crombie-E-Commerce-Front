@@ -58,7 +58,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         setValue(newValues);
       });
     });
-  }, [value.token]);
+  }, [value.token, value.firstName]);
 
   return (
     <Usercontext.Provider value={{ ...value, handleSetValues }}>

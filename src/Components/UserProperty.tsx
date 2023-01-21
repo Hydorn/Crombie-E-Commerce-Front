@@ -2,15 +2,17 @@ import { useFormContext } from "react-hook-form";
 import "./Styles/userProperty.css";
 type UserProperyProps = {
   name: string;
-  value: string;
+  value?: string;
   disable?: boolean;
   keyName: string;
+  type?: string;
 };
 const UserPropery: React.FC<UserProperyProps> = ({
   name,
   value,
   disable,
   keyName,
+  type,
 }) => {
   const { register } = useFormContext();
   return (
@@ -20,8 +22,8 @@ const UserPropery: React.FC<UserProperyProps> = ({
         <input
           {...register(keyName, { required: "Required" })}
           className="user_input"
-          type={"text"}
-          defaultValue={String(value)}
+          type={type || "text"}
+          defaultValue={String(value) || ""}
           disabled={disable}
         />
       </span>

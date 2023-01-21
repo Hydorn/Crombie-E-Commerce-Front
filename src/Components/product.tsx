@@ -2,7 +2,7 @@ import url from "constant";
 import { useUserContext } from "Context/userContext";
 import { useTypedFetch } from "Hooks/useTypedFetch";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoadingSpiner from "./LoadingSpiner";
 import "./Styles/product.css";
 import Votes from "./Votes";
@@ -11,37 +11,19 @@ type ProductProps = {
   name: string;
   description: string;
   contact: string;
+  loading?: boolean;
+  handleDelete?: (e: React.MouseEvent<HTMLElement>) => void;
 };
 const Product: React.FC<ProductProps> = ({
   id,
   name,
   description,
   contact,
+  loading,
+  handleDelete,
 }) => {
-  const [loading, setLoading] = useState(false);
   const { pathname } = useLocation();
-  const { token } = useUserContext();
-  const { typedFetch } = useTypedFetch({ url, path: "/proyects" });
 
-  const handleDelete = async () => {
-    try {
-      setLoading(true);
-      fetch(url + "/proyects/" + id, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-      setLoading(false);
-      typedFetch();
-    } catch (error: any) {
-      setLoading(false);
-      console.log(error.message);
-    }
-  };
   if (pathname === "/administration")
     return (
       <div className="product_container">
@@ -62,6 +44,7 @@ const Product: React.FC<ProductProps> = ({
             <div
               onClick={handleDelete}
               className="setting_icon review_setting_icon"
+              id={id}
             >
               {loading ? <LoadingSpiner /> : <span>&#128465;</span>}
             </div>

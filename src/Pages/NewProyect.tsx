@@ -5,16 +5,19 @@ import url from "constant";
 import { useUserContext } from "Context/userContext";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const NewProyect = () => {
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { token } = useUserContext();
   const methods = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = methods.handleSubmit((data) => {
+  const onSubmit = methods.handleSubmit(async (data) => {
     try {
       setLoading(true);
-      fetch(url + "/proyects", {
+      const res = await fetch(url + "/proyects", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -22,11 +25,14 @@ const NewProyect = () => {
           authorization: `Bearer ${token}`,
         },
       });
+      const fetched = await res.json();
 
       setLoading(false);
+      if (res.ok) return navigate("/administration");
+      setError(fetched);
     } catch (error: any) {
       setLoading(false);
-      console.log(error.message);
+      setError(error.message);
     }
   });
 
@@ -49,6 +55,7 @@ const NewProyect = () => {
                 keyName="contactEmail"
                 value={""}
               />
+              {error ? <span className="error">&#9888; {error}</span> : null}
               <div className="user_btn_container">
                 <SubmitBtn value={"Submit"} loading={loading} />
               </div>

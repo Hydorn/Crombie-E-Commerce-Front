@@ -10,7 +10,7 @@ type typedFetchReturn<T> = {
   data: T | null;
   loading: boolean;
   error: string | null;
-  typedFetch: () => {};
+  reFetch: () => void;
 };
 
 export const fetcher = async <T,>({ url, path }: RequestConfig): Promise<T> => {
@@ -24,9 +24,13 @@ export const useTypedFetch = <T,>({
   path,
 }: RequestConfig): typedFetchReturn<T> => {
   const [fetchedData, setFetchedData] = useState<T | null>(null);
+  const [dep, setDep] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const reFetch = () => {
+    setDep(!dep);
+  };
   const typedFetch = async () => {
     try {
       setLoading(true);
@@ -44,7 +48,7 @@ export const useTypedFetch = <T,>({
 
   useEffect(() => {
     typedFetch();
-  }, [url, path]);
+  }, [url, path, dep]);
 
-  return { data: fetchedData, loading, error, typedFetch };
+  return { data: fetchedData, loading, error, reFetch };
 };

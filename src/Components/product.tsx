@@ -1,8 +1,4 @@
-import url from "constant";
-import { useUserContext } from "Context/userContext";
-import { useTypedFetch } from "Hooks/useTypedFetch";
-import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LoadingSpiner from "./LoadingSpiner";
 import "./Styles/product.css";
 import Votes from "./Votes";

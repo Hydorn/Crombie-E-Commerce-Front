@@ -11,7 +11,7 @@ const Login = () => {
   let navigate = useNavigate();
   useEffect(() => {
     if (logged) return navigate("/");
-  }, [logged]);
+  }, [logged, navigate]);
   return (
     <>
       <NavBar />

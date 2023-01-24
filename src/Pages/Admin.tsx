@@ -27,7 +27,7 @@ const Admin = () => {
     const id = e.currentTarget.id;
     try {
       setLoading(true);
-      const res = fetch(url + "/proyects/" + id, {
+      fetch(url + "/proyects/" + id, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",

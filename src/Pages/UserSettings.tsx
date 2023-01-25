@@ -17,7 +17,7 @@ const UserSettings = () => {
   const methods = useForm();
 
   const fetchUser = () => {
-    fetch("http://localhost:3000/api/me", {
+    fetch( url +"/me", {
       method: "GET",
       headers: {
         "content-type": "application/json",

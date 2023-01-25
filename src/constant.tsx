@@ -1,3 +1,3 @@
-const url = "http://localhost:3000/api";
+const url = "http://15.229.45.249:5000/api";
 
 export default url;

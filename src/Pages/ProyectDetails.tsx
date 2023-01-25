@@ -18,6 +18,7 @@ const ProyectDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         setProyectData(data);
+        console.log(proyectData);
       });
   }, [id]);
 

@@ -1,3 +1,4 @@
+import url from "constant";
 import React, { useContext, useEffect, useState } from "react";
 
 type Resp = {
@@ -37,7 +38,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/me", {
+    fetch(url + "/me", {
       method: "GET",
       headers: {
         "content-type": "application/json",

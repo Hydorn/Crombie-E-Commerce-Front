@@ -58,7 +58,7 @@ const UserSettings = () => {
       setLoading(false);
 
       if (res.ok) {
-        handleSetValues("firstName", "");
+        handleSetValues("firstName", " ");
         setDisabled(!disabled);
         return;
       }

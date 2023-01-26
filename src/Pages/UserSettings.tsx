@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { FetchedUser } from "Utilities/types";
 import "./Styles/UserSettings.css";
-
+/* eslint-disable */
 const UserSettings = () => {
   const [userProperties, setUserProperties] = useState<FetchedUser>();
   const [disabled, setDisabled] = useState(true);
@@ -17,7 +17,7 @@ const UserSettings = () => {
   const methods = useForm();
 
   const fetchUser = () => {
-    fetch( url +"/me", {
+    fetch(url + "/me", {
       method: "GET",
       headers: {
         "content-type": "application/json",

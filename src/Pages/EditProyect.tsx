@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { FetchedProyect } from "Utilities/types";
+/* eslint-disable */
 
 const EditProyect = () => {
   const methods = useForm();

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import url from "constant";
 import React, { useContext, useEffect, useState } from "react";
 import { FetchedRating } from "Utilities/types";

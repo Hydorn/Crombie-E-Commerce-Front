@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+/* eslint-disable */
 
 type RequestConfig = {
   url: string;

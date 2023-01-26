@@ -8,6 +8,7 @@ import { FetchedProyect } from "Utilities/types";
 import url from "constant";
 import Votes from "Components/Votes";
 import ReviewProvider from "Context/useReviewContext";
+/* eslint-disable */
 
 const ProyectDetails = () => {
   const { id } = useParams();

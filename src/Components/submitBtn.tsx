@@ -4,6 +4,8 @@ type SubmitBtnProps = {
   value: string;
   loading: boolean;
 };
+//Git test
+
 const SubmitBtn: React.FC<SubmitBtnProps> = ({ value, loading }) => {
   return (
     <>
